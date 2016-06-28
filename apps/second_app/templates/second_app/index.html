@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<a href="/">Logout</a>
+	<h2>Welcome {{users.alias}} !</h2>
+	<table class="table table-striped">
+		<tr>
+			<th>Alias</th>
+			<th>Action</th>
+		</tr>
+
+			{%for user in friends%}
+		<tr>
+			<td>{{user.user_id.alias}}</td>
+			<form action = "/add_friend/{{user.user_id.id}}">
+			<td>
+				<a href="/view/{{user.user_id.id}}">View Profile</a>
+				<a href="/remove/{{user.user_id.id}}">Remove as Friend</a>
+			</td>
+			</form>
+		</tr>
+		{%endfor%}
+		</table>
+	<p>Other users not on your friends list:</p>
+	<table class="table table-striped">
+		<tr>
+			<th>Alias</th>
+			<th>Action</th>
+		</tr>
+		{%for user in all_users%}
+		<tr>
+			<td><a href="/view/{{user.user_id.id}}">{{user.user_id.alias}}</a></td>
+			<form action = "/add_friend/{{user.user_id.id}}">
+			<td><input type="submit" value="Add as friend"></t>
+			</form>
+		</tr>
+		{%endfor%}
+	</table>
+</body>
+</html
